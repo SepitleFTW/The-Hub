@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="{% static 'videos/shimmering_water.mp4' %}" type="video/mp4">
+    </video>
+    <div class="form-container">
+        <img src="{% static 'images/RowSALogo.png' %}" class="form-image" alt="Rowing Logo">
+        <h2>Register</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-block">Register</button>
+        </form>
+        <a href="{% url 'login' %}" class="login-link"> Already registered? Login here</a>
+    </div>
+</body>
+</html>

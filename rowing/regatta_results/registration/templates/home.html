@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/styless.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'home' %}"><img src="{% static 'images/RowSALogo.png' %}" alt="RowSA Blades"></a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="section-tabs">
+            <div class="section-tab" onclick="location.href='{% url 'regattas' %}'">
+                <img src="{% static 'images/wits.jpg' %}" alt="Regattas">
+                <div class="layer">
+                    <h3>REGATTAS</h3>
+                </div>
+            </div>
+            <div class="section-tab" onclick="location.href='{% url 'weather' %}'">
+                <img src="{% static 'images/weather.jpeg' %}" alt="Weather">
+                <div class="layer">
+                    <h3>WEATHER</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

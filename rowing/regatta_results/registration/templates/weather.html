@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/stylessweather.css' %}" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="{% static 'videos/weather.mp4' %}" type="video/mp4">
+    </video>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">The Hub</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'regattas' %}">Regattas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'weather' %}">Weather</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h3>Weather</h3>
+        <p>Welcome to the weather page.</p>
+        <div id="weather-info"></div>
+    </div>
+
+    <script>
+        // AJAX request to OpenWeather API
+        var apiKey = 'bf6a87295aff8c4c6a334dcc1e5941b2';
+        var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=pretoria&appid=' + apiKey;
+
+        var weatherInfo = document.getElementById('weather-info');
+
+        fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Convert temperature from Kelvin to Celsius
+            var temperatureKelvin = data.main.temp;
+            var temperatureCelsius = (temperatureKelvin - 273.15).toFixed(2);
+            var description = data.weather[0].description;
+
+            weatherInfo.innerHTML = 'The weather in Pretoria is currently:<br>' +
+                                    'Temperature: ' + temperatureCelsius + '°C<br>' +
+                                    'Description: ' + description;
+        })
+        .catch(error => {
+            console.error("Error fetching weather data:", error);
+            weatherInfo.innerHTML = "Error fetching weather data";
+        });
+    </script>
+</body>
+</html>
