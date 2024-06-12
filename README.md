@@ -43,6 +43,9 @@ Users can register by providing their details on the registration page. After re
 If you would love to contribute to this please open an issue or submit a pull request.(Or contact me at sepitleleshilo69@gmail.com)
 
 ## Acknowledgments
-Django
+Django![weather](https://github.com/SepitleFTW/The-Hub/assets/136067402/3991fa56-8675-4885-93ce-fa1929ed0d62)
+
 Bootstrap
 Open Weather API
+
+
