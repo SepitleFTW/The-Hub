@@ -3,19 +3,21 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
 
-
+// registration form 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput) 
     password2 = forms.CharField(widget=forms.PasswordInput, label="Please repeat password")
-    user_type = forms.ChoiceField(choices=Profile.USER_TYPES)
+    user_type = forms.ChoiceField(choices=Profile.USER_TYPES) #this is WIP
 
+    #this class is for fields to include in the field
     class Meta:
-        model = User
-        fields = ("username", "first_name", "last_name", "email")
+        model = User #This uses the built in User model
+        fields = ("username", "first_name", "last_name", "email") #these are the fields I'll include
         help_texts = {
             "username": "", #to remove nonsense
         }
 
+    #this is to make sure both passwords match
     def clean_password2(self):
         cd = self.cleaned_data
         if cd["password"] != cd["password2"]:
