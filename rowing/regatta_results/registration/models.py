@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+#class for the diffrent users(Rowers, coaches, and officials)
 class Profile(models.Model):
     USER_TYPES = (
         ("Rower", "Rower"),
