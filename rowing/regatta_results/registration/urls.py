@@ -4,7 +4,7 @@ from . import views
 from .views import homepage
 
 
-
+# path to all the web pages, pretty self explanatory lmao
 urlpatterns = [
     path('registration/', views.registration, name='registration'),
     path('homepage/', views.homepage, name='home'),
